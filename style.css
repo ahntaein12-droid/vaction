@@ -18,6 +18,7 @@
 body {
   margin: 0;
   min-height: 100vh;
+  overflow-x: hidden;
   font-family: Arial, "Noto Sans KR", sans-serif;
   color: var(--ink);
   background:
@@ -68,18 +69,21 @@ h2 {
   color: var(--muted);
   font-size: 17px;
   line-height: 1.65;
+  overflow-wrap: anywhere;
 }
 
 .app-shell {
   display: grid;
   grid-template-columns: minmax(220px, 290px) minmax(0, 1fr);
   gap: 22px;
-  width: min(1120px, calc(100% - 48px));
+  width: calc(100% - 48px);
+  max-width: 1120px;
   margin: 0 auto 54px;
 }
 
 .calculator-nav,
 .calculator-panel {
+  max-width: 100%;
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(221, 227, 238, 0.9);
   box-shadow: var(--shadow);
@@ -194,10 +198,66 @@ select {
   background: #ffffff;
 }
 
+input[type="checkbox"] {
+  width: 18px;
+  min-height: 18px;
+  accent-color: var(--primary);
+}
+
 input:focus,
 select:focus {
   border-color: var(--primary);
   outline: 3px solid rgba(31, 111, 235, 0.16);
+}
+
+.subject-list {
+  display: grid;
+  gap: 12px;
+}
+
+.subject-row {
+  display: grid;
+  grid-template-columns: minmax(160px, 1.4fr) minmax(96px, 0.8fr) minmax(96px, 0.8fr) 86px 72px;
+  align-items: end;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fbfdff;
+}
+
+.major-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 48px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.major-toggle span {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.icon-button {
+  min-height: 48px;
+  padding: 0 12px;
+  border: 1px solid #f0c8c8;
+  border-radius: 10px;
+  color: #a13b3b;
+  background: #fff7f7;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.icon-button:hover {
+  background: #ffecec;
 }
 
 .hint {
@@ -280,7 +340,8 @@ select:focus {
 
   .app-shell {
     grid-template-columns: 1fr;
-    width: min(100% - 28px, 620px);
+    width: calc(100% - 28px);
+    max-width: 620px;
   }
 
   .calculator-nav {
@@ -290,6 +351,14 @@ select:focus {
   .calculator-panel {
     min-height: auto;
     padding: 22px;
+  }
+
+  .subject-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .subject-name-field {
+    grid-column: 1 / -1;
   }
 }
 
@@ -309,5 +378,13 @@ select:focus {
 
   #result-main {
     font-size: 24px;
+  }
+
+  .subject-row {
+    grid-template-columns: 1fr;
+  }
+
+  .major-toggle {
+    justify-content: flex-start;
   }
 }
