@@ -2,23 +2,69 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>My Music Player</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>생활 계산기 모음</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="player">
-    <h1>My Music Player</h1>
-
-    <div class="album-cover">
-      🎵
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">Daily Calculator</p>
+      <h1>생활 계산기 모음</h1>
+      <p class="subtitle">학점, 시급, 월세, 대출, BMI, 전역일, D-day까지 자주 쓰는 계산을 한곳에서 처리하세요.</p>
     </div>
+  </header>
 
-    <h2 id="song-title">No Song Selected</h2>
-    <p id="artist-name">Unknown Artist</p>
+  <main class="app-shell">
+    <aside class="calculator-nav" aria-label="계산기 선택">
+      <button class="nav-button active" type="button" data-calculator="grade">
+        <span class="nav-icon">A+</span>
+        <span>학점 계산기</span>
+      </button>
+      <button class="nav-button" type="button" data-calculator="wage">
+        <span class="nav-icon">₩</span>
+        <span>알바 시급 계산기</span>
+      </button>
+      <button class="nav-button" type="button" data-calculator="rent">
+        <span class="nav-icon">집</span>
+        <span>월세/관리비 계산기</span>
+      </button>
+      <button class="nav-button" type="button" data-calculator="loan">
+        <span class="nav-icon">%</span>
+        <span>대출 이자 계산기</span>
+      </button>
+      <button class="nav-button" type="button" data-calculator="bmi">
+        <span class="nav-icon">kg</span>
+        <span>BMI 계산기</span>
+      </button>
+      <button class="nav-button" type="button" data-calculator="military">
+        <span class="nav-icon">D</span>
+        <span>군대 전역일 계산기</span>
+      </button>
+      <button class="nav-button" type="button" data-calculator="dday">
+        <span class="nav-icon">날</span>
+        <span>날짜 D-day 계산기</span>
+      </button>
+    </aside>
 
-    <button id="play-btn">재생</button>
-    <button id="pause-btn">일시정지</button>
-  </div>
+    <section class="calculator-panel" aria-live="polite">
+      <div class="panel-header">
+        <div>
+          <p id="panel-category" class="eyebrow">Grade</p>
+          <h2 id="panel-title">학점 계산기</h2>
+        </div>
+        <span id="panel-badge" class="status-badge">평균 평점</span>
+      </div>
+
+      <form id="calculator-form" class="calculator-form"></form>
+
+      <div class="result-area">
+        <p class="result-label">계산 결과</p>
+        <strong id="result-main">값을 입력하면 결과가 표시됩니다.</strong>
+        <p id="result-sub">필수 항목을 채운 뒤 계산 버튼을 누르세요.</p>
+      </div>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
